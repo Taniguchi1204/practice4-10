@@ -1,0 +1,21 @@
+<%= render "books/book_error", book:@book %>
+<%= render "books/user", user:@user,book:@book %>
+
+<h1>Books</h1>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Opinion</th>
+  </tr>
+  <% @books.each do |book|%>
+  <tr>
+    <td><%= attachment_image_tag book.user, :profile_image, :fill,20,20,fallback:"no_image.jpg" %><br><%= book.user.name%></td>
+    <td>
+      <%= link_to book_path(book.id) do %>
+        <%= book.title %>
+      <% end %>
+      </td>
+    <td><%= book.body %></td>
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,20 @@
+
+<%= render "books/user", user:@user,book:@book %>
+
+<h1>Book detail</h1>
+<table>
+  <tr>
+    <td><%= attachment_image_tag @book_detail.user, :profile_image, :fill,20,20,fallback:"no_image.jpg" %><br><%= @book_detail.user.name%></td>
+    <td>
+      <%= link_to book_path(@book_detail.id) do %>
+        <%= @book_detail.title %>
+      <% end %>
+      </td>
+    <td><%= @book_detail.body %></td>
+    <% if @book_detail.user == current_user %>
+    <td><%= link_to "Edit", edit_book_path(@book_detail.id) %></td>
+    <td><%= link_to "Destroy", book_path(@book_detail.id), method: :delete %></td>
+    <% end %>
+  </tr>
+</table>
+

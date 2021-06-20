@@ -1,0 +1,17 @@
+<% if @user.errors.any? %>
+  <p><%= @user.errors.count %> errors prohibited this user from being saved</p>
+  <% @user.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+  <% end %>
+<% end %>
+
+<h1>User info</h1>
+<%= form_with model: @user,local: true do |f| %>
+  <p>Name</p>
+  <%= f.text_field :name %>
+  <p>Image</p>
+  <%= f.attachment_field :profile_image %>
+  <p>Introduction</p>
+  <%= f.text_area :introduction %>
+  <%= f.submit "Update User" %>
+<% end %>
